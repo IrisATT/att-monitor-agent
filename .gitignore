@@ -1,0 +1,11 @@
+# Ignore only .tar.gz files (release bundles)
+*.tar.gz
+
+# Optional: Ignore editor/OS-specific files
+*.log
+*.pyc
+__pycache__/
+.DS_Store
+.env
+*.bak
+*.swp
