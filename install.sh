@@ -2,8 +2,8 @@
 
 set -e
 
-VERSION="v1.0.0"
-DOWNLOAD_URL="https://github.com/your-org/monitor-agent/releases/download/${VERSION}/monitor-agent-${VERSION}.tar.gz"
+VERSION="v1.0.2"
+DOWNLOAD_URL="https://github.com/your-username/monitor-agent/raw/main/monitor-agent-${VERSION}.tar.gz"
 
 echo "📥 Đang tải monitor agent..."
 curl -L $DOWNLOAD_URL -o /tmp/monitor-agent.tar.gz
@@ -26,7 +26,7 @@ EOF
 
 echo "📦 Cài Python và thư viện..."
 apt-get update -y && apt-get install -y python3 python3-pip
-pip3 install -r /opt/monitor-agent/requirements.txt
+pip3 install --no-cache-dir -r /opt/monitor-agent/requirements.txt
 
 echo "⚙️ Cài đặt service..."
 cp /opt/monitor-agent/monitor-agent.service /etc/systemd/system/monitor-agent.service
@@ -34,4 +34,4 @@ systemctl daemon-reload
 systemctl enable monitor-agent
 systemctl restart monitor-agent
 
-echo "✅ Cài đặt hoàn tất!"
+echo "✅ Cài đặt hoàn tất! Agent đang chạy nền. Xem log: /var/log/monitor-agent.log"
